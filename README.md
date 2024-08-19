@@ -21,3 +21,21 @@ The solution is to ensure that both ios and android libraries are only set to co
 ```
 
 Now, Android builds and runs without a problem.
+
+2. Error accessing the iOS implementation
+
+Although the first error was easily resolved, the next problem is that I am unable to start tracking for the iOS tracker.
+
+```xaml
+AppDelegate.cs(14,9): Error CS0234 :
+ The type or namespace name 'iOS' does not exist in the namespace 'HeapInc.Xamarin' (are you missing an assembly reference?)
+```
+
+I have tried cleaning, rebuilding, and restarting my mac.
+
+These [lines from the documentation](https://developers.heap.io/docs/xamarin-quick-start) are especially confusing:
+
+> If your application uses .NET MAUI, the Heap Xamarin Bridge will work for your app as well. 
+> To enable building with .NET MAUI, raise your project's target framework to .NET Standard 2.1, clean, and rebuild.
+
+MAUI apps target .net core not .net standard. We cannot change the project's target framework from .net 8 to .net standard 2.1.
